@@ -140,4 +140,9 @@ it does not rerun the historical strategy search.
 - [Changes in this publication](CHANGELOG.md)
 - [Original development repository](https://github.com/Weijie608/Bulls-and-Cows)
 
-No license has been selected for this publication yet.
+## License
+
+This repository's code, documentation, strategy files, and result files are
+licensed under the [MIT License](LICENSE).
+
+Copyright (c) 2026 Weijie608.
