@@ -1,0 +1,33 @@
+name: Verify published strategy
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.10'
+          - os: windows-latest
+            python: '3.13'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify original and derived artifacts
+        run: python -B publication.py verify
+      - name: Replay the published tree and check corruption detection
+        run: python -B -m unittest discover -s tests -v

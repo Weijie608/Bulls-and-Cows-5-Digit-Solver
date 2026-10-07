@@ -1,0 +1,9 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*_steps.txt text eol=lf
+*.strategy.b85 -text
+*.sqlite3 binary
+SHA256SUMS text eol=lf

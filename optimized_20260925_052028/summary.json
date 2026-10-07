@@ -1,0 +1,82 @@
+{
+  "claims": {
+    "full_strategy_on_arbitrary_subsets": false,
+    "global_mean_optimality_proved": false,
+    "global_worst_case_optimality_proved": false,
+    "worst_case_upper_bound": 7
+  },
+  "format": "bac5-publication-summary-v1",
+  "identification": {
+    "distribution": {
+      "1": 1,
+      "2": 14,
+      "3": 573,
+      "4": 6541,
+      "5": 17151,
+      "6": 5960
+    },
+    "maximum": 6,
+    "mean_decimal": 4.941369047619047,
+    "mean_denominator": 30240,
+    "mean_numerator": 149427,
+    "total": 149427
+  },
+  "rules": {
+    "code_count": 30240,
+    "digits": "0123456789",
+    "guesses_from_entire_universe": true,
+    "leading_zero_allowed": true,
+    "length": 5,
+    "mean_assumes_uniform_secret": true,
+    "repeated_digits": false,
+    "s_includes_r": true,
+    "winning_feedback": [
+      5,
+      5
+    ]
+  },
+  "snapshot": "optimized_20260925_052028",
+  "source_files": {
+    "guess5_optimized.sqlite3": {
+      "bytes": 3530752,
+      "sha256": "4d6def8c83e4583348f0168237f8dbc651303906cf64ba9878050c35c1c56c35"
+    },
+    "guess5_optimized.strategy.b85": {
+      "bytes": 278895,
+      "sha256": "0a1c3a70e9dfff469a94ab41d66100a1d333914744c944b3ad4f202b45fbb972"
+    },
+    "guess5_optimized_steps.txt": {
+      "bytes": 241920,
+      "sha256": "1ca801bbc9e2e1005e9b78dbb09d90422accfdd4b9b4ded70ff65ec6ff7f3102"
+    }
+  },
+  "strategy": {
+    "database_records": 38840,
+    "non_singleton_decisions": 8600,
+    "root_guess": "01234",
+    "singleton_decisions": 30240
+  },
+  "success": {
+    "distribution": {
+      "1": 1,
+      "2": 5,
+      "3": 110,
+      "4": 1753,
+      "5": 9508,
+      "6": 15245,
+      "7": 3618
+    },
+    "maximum": 7,
+    "mean_decimal": 5.677546296296296,
+    "mean_denominator": 30240,
+    "mean_numerator": 171689,
+    "total": 171689
+  },
+  "tree": {
+    "guess_nodes": 30862,
+    "maximum_depth": 7,
+    "nodes": 61102,
+    "sha256": "6a8ccc83a15cfdb5f2b852f34bc46eb145a743a50f7f529b3cc64fb9f0b4075a",
+    "success_leaves": 30240
+  }
+}
