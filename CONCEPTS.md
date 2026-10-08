@@ -189,16 +189,24 @@ $$
 H^*(S)=\min_f H_f(S).
 $$
 
-The project's **optimal full strategy** attains $H^*(S)$ for every non-empty
-candidate set. An **optimal strategy** from $U$ attains the corresponding optimum
-at the root and at every reached continuation state. A **locally optimal
-strategy** does the same for a specified starting set and its continuations.
-Ties can leave more than one optimal strategy.
+An **optimal strategy** from $U$ first attains $H^*(S)$ at the root and at
+**every reached non-empty continuation state**. Among all strategies satisfying
+all of these worst-case minima, it minimizes the uniform mean success count
+from $U$. An **optimal local strategy** applies the same two requirements to a
+specified starting set and all its reached continuations. Average counts use
+equal weight for each possible secret in the starting set.
 
-Merely achieving the best root maximum does not force every subtree to be
-optimal: a worse continuation on a shallow branch might still fit within the
-root's depth limit. The intended objective explicitly includes optimality of the
-continuations.
+An **optimal full strategy** applies this local rule to every non-empty
+candidate set, including sets not reached from $U$. More than one strategy may
+attain both objectives. Choosing the lexicographically smallest guess among
+remaining ties makes an implementation deterministic; uniqueness is not part
+of the definition.
+
+Merely minimizing the root maximum and then the root mean is a weaker
+requirement: a continuation with a worse local maximum may still fit within
+the root's depth limit. Under the definition above, an improvement in the mean
+cannot justify increasing any reached state's maximum above its own $H^*(S)$.
+Likewise, minimizing the mean before the maximum is a different objective.
 
 ### A recurrence for the worst-case value
 
@@ -233,6 +241,35 @@ but an empty set is not a playable state.
 This recurrence concerns eventual strict-success depth. Minimizing the largest
 bucket or the variance of bucket sizes is a heuristic for choosing a partition,
 not an equivalent definition of $H^*$.
+
+### Minimum mean subject to every state's optimal worst case
+
+Retain only guesses attaining the worst-case minimum:
+
+$$
+G_H(S)=\left\{g\in G(S):
+1+\max_{a\in A:\,S_{g,a}\ne\varnothing}R(S,g,a)=H^*(S)\right\}.
+$$
+
+Let $C^*(S)$ be the minimum total additional success count among strategies
+that attain $H^*$ at $S$ and at every reached continuation. Then
+
+$$
+C^*(S)=|S|+\min_{g\in G_H(S)}
+\sum_{\substack{a\in A,\ a\ne(5,5)\\S_{g,a}\ne\varnothing}}C^*(S_{g,a}),
+\qquad C^*(\{x\})=1.
+$$
+
+The corresponding minimum uniform mean is $C^*(S)/|S|$. The term $|S|$ charges
+the current guess once to every possible secret. A winning bucket has no
+continuation cost; a non-winning singleton still contributes one more guess.
+One may set $C^*(\varnothing)=0$ for bookkeeping.
+
+Every child uses the same two-stage rule recursively. If a reached child had
+a smaller total within this class, replacing its continuation would preserve
+all worst-case minima and reduce the parent's total. Thus the secondary
+optimum also holds at each reached state. This is stronger than optimizing the
+mean subject only to a depth limit at the root.
 
 ## 7. How this publication relates to the objective
 
